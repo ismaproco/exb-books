@@ -1,2 +1,4 @@
 node_modules
 .DS_Store
+ideas.md
+npm-debug.log
