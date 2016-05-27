@@ -3,18 +3,59 @@
  */
  
 // imports
-@import url(https://fonts.googleapis.com/css?family=Unica+One);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
 
 // mixins
+/* reseting the global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
 
 // application styles
 body {
-  background: #111;
-  font-family: 'Unica One', cursive;
+  background: #f3f3f3;
+  font-family: 'Roboto', sans-serif;
 }
+
+/* nav styles */
+nav {
+  background: #333;
+  color: #f2f2f2;
+  position: relative;
+  height: 35px;
+
+  .title {
+    padding: 5px;
+    display: inline-block;
+  }
+
+  .logo {
+    display: inline-block;
+    padding: 5px;
+    width: 50px;
+    text-align: center;
+    font-size: 1.2em;
+
+    .logo-red {
+      color: red;
+    }
+  }
+
+  .out {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display:block;
+    line-height: 35px;
+    padding: 0 5px;
+  }
+}
+/* end nav styles */
 
 #main {
 	width: 100%;
   height: 100%;
-  color: white;
+  color: #333;
 }
