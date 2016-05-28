@@ -1,9 +1,9 @@
-var module = angular.module('directives.filter',[]);
+var module = angular.module('exb.books.directives');
 
-module.exports = module.directive('headerNav', function(){
-    console.log('Hello this is a new directive');
+module.exports = module.directive('booksFilter', function(){
+    var template = require('../templates/filter.html');
     return {
         restrict: 'E', 
-        templateUrl: '../templates/headernav.html'
+        template: template
     }
 });

@@ -1,7 +1,6 @@
-var module = angular.module('directives.headernav',[]);
+var module = angular.module('exb.books.directives');
 
 module.exports = module.directive('headerNav', function(){
-    console.log('Hello this is a new directive');
     return {
         restrict: 'E', 
         templateUrl: '../templates/headernav.html'
