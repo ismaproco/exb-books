@@ -1,7 +1,10 @@
+/*
+    requires
+*/
 var angular = require('angular');
-var ngModule = angular.module('app', []);
+require('./directives/headernav');
 
-console.log(ngModule);
-
-//load the basic styling for the page
+// load the basic styling for the page
 require('./styles/style.less');
+
+var ngModule = angular.module('exb.books', ['directives.headernav']);
