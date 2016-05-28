@@ -27,6 +27,10 @@ var config = {
       {
         test: /\.less$/,
         loader: "style!css!less"
+      },
+      {
+        test: /.html$/,
+        loader: "html"
       }
     ]
   },
