@@ -1,7 +1,9 @@
+'use strict';
 /*
-    requires
+    import of libraries
 */
 var angular = require('angular');
+
 require('./directives/lib');
 
 // load the basic styling for the page

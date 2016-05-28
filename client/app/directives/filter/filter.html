@@ -1,7 +1,17 @@
 <div class="left-container">
     <span>Container</span>
     <div class="category-container">
-        
+        <span class="place-holder" ng-if="filterCategories.length == 0">
+            Drag over categories or click and enter a new one
+        </span>
+        <ul dnd-list="filterCategories" ng-click="containerClick($event)" dnd-drop="validateDrag(event, index, item, external, type, 'itemType')">
+            <li ng-repeat="item in filterCategories"
+                draggable="true">
+                {{item.label}}
+                <input type="text" name="inputCategory" ng-if="item.type == 'input'" util-keypress="updateCategory(item, $text)" key-command="enter" auto-focus>
+                <span ng-click="deleteFilterCategory(item, $event)"><i class="fa fa-close"></i></span>
+            </li>
+        </ul>
     </div>
     
     <div>
@@ -24,20 +34,12 @@
     Drag and Drop
 
     <ul>
-        <li>
-            Biography
-        </li>
-        <li>
-            Children's Books
-        </li>
-        <li>
-            Garden
-        </li>
-        <li>
-            Health
-        </li>
-        <li>
-            History
+        <li ng-repeat="item in categories"
+            dnd-draggable="item"
+            dnd-effect-allowed="copy"
+            draggable="true"
+            >
+            {{item.label}}
         </li>
     </ul>
 </div>
