@@ -16,7 +16,8 @@
 // application styles
 body {
   background: #f3f3f3;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto-Regular', sans-serif;
+  letter-spacing: 0.9px;
 }
 
 /* nav styles */
@@ -24,23 +25,24 @@ nav {
   background: #333;
   color: #f2f2f2;
   position: relative;
-  height: 35px;
-
-  .title {
-    padding: 5px;
-    display: inline-block;
-  }
+  height: 30px;
 
   .logo {
     display: inline-block;
     padding: 5px;
     width: 50px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 14px;
 
     .logo-red {
       color: red;
     }
+  }
+
+  .title {
+    padding: 5px;
+    display: inline-block;
+    font-size: 12px;
   }
 
   .out {
@@ -48,8 +50,9 @@ nav {
     top: 0px;
     right: 0px;
     display:block;
-    line-height: 35px;
-    padding: 0 5px;
+    line-height: 30px;
+    padding: 0 10px;
+    border-left: solid 1px #000;
   }
 }
 /* end nav styles */
@@ -59,3 +62,77 @@ nav {
   height: 100%;
   color: #333;
 }
+
+/* sections styling */
+
+section {
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+
+  &.filter {
+    margin-top: 20px;
+    height: 215px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+    font-size: 14px;
+
+    .left-container {
+      float: left;
+      width: 800px;
+      
+      div {
+        margin-top: 10px;
+      }
+
+      .category-container {
+        width:100%;
+        min-height: 50px;
+        border: solid 1px #c3c3c3;
+      }
+
+      input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+        margin: 0 10px;
+      }
+
+      label {
+        display: inline-block;
+        width: 100px;
+        font-size: 12px;
+      }
+
+    }
+
+    .right-container {
+      float: left;
+      width:140px;
+      margin-left: 20px;
+
+      ul {
+        margin-top: 10px;
+        border-top: solid 1px #c3c3c3;
+        border-left: solid 1px #c3c3c3;
+        border-right: solid 1px #c3c3c3;
+        font-size: 12px;
+
+        li {
+          height: 29px;
+          line-height: 29px;
+          letter-spacing: 0px;
+          border-bottom: solid 1px #c3c3c3; 
+          list-style: none;
+        }
+
+        li:before {    
+          font-family: 'FontAwesome';
+          content: '\f047';
+          margin:0 5px 0 5px;
+        }
+      }
+    }
+  }
+}
+
+
