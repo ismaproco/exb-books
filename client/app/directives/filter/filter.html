@@ -1,6 +1,6 @@
 <div class="left-container">
     <span>Container</span>
-    <div class="category-container">
+    <div class="category-container row">
         <span class="place-holder" ng-if="filterCategories.length == 0">
             Drag over categories or click and enter a new one
         </span>
@@ -15,18 +15,31 @@
     </div>
     
     <div>
-        <div>
-            <span>Language</span> 
-            <input type="checkbox" name="english">
+        <div class="row">
+            <span class="label-title">Language</span> 
+            <input type="checkbox" name="english" ng-model="checkEnglish">
             <label for="english">English</label>
-            <input type="checkbox" name="german">
+            <input type="checkbox" name="german" ng-model="checkGerman">
             <label for="german">German</label>
         </div>
-        <div>
-            <span>Date</span>
+        <div class="row">
+            <span class="label-title">Date</span>
+            <div class="calendar-container">
+                <input type="text" date-time id="datePicker" ng-model="filterDate" 
+                view="date" min-view="date" max-view="year" 
+                format="DD.MM.YYYY" date-change="changeDate">
+            </div>
         </div>
-        <div>
-            <span>Cover Color</span>
+        <div class="row">
+            <span class="label-title">Cover Color</span>
+            <div class="color-container">
+                <color-picker ng-model="filterColor"
+                color-picker-format="'hex'"
+                color-picker-alpha="false"
+                color-picker-case="upper"
+                color-picker-on-change="colorChange($event, color)"
+                ></color-picker>
+            </div>
         </div>
     </div>
 </div>
@@ -43,3 +56,4 @@
         </li>
     </ul>
 </div>
+<div class="clear-both"></div>

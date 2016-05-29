@@ -1,4 +1,5 @@
 'use strict';
+require('./header.less');
 
 var module = angular.module('exb.books.directives');
 

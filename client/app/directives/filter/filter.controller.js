@@ -4,6 +4,11 @@ var controller = ['$scope', function($scope) {
   
   var inputVisible = false;
   $scope.filterCategories = [ ];
+  $scope.filterDate = new Date();
+  $scope.filterColor = '#AAC4F3';
+  $scope.checkEnglish = true;
+  $scope.checkGerman = true;
+
 
   $scope.categories = [
     {label:'Biography', type:'draggable'},
@@ -73,6 +78,20 @@ var controller = ['$scope', function($scope) {
       inputVisible = false;
     }
   }
+
+  /* pickers events */
+
+  $scope.dateChange = function(modelName, newDate) {
+
+    //hide the calendar
+    //$scope.$broadcast('hidePicker');
+  }
+
+  $scope.colorChange = function($event, color) {
+
+  }
+
+  /* End picker events */
 
 }];
 

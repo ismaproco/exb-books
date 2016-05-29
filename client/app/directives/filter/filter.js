@@ -1,4 +1,6 @@
 'use strict';
+require('./filter.less');
+
 var module = angular.module('exb.books.directives');
 
 module.exports = module.directive('booksFilter', function(){
