@@ -1,6 +1,6 @@
 'use strict';
 
-var controller = ['$scope', function($scope) {
+var controller = ['$scope', 'booksRestService', function($scope, booksRestService) {
   
   var inputVisible = false;
   $scope.filterCategories = [ ];
@@ -82,13 +82,13 @@ var controller = ['$scope', function($scope) {
   /* pickers events */
 
   $scope.dateChange = function(modelName, newDate) {
-
     //hide the calendar
-    //$scope.$broadcast('hidePicker');
+    $scope.$broadcast('hidePicker');
+    booksRestService.getBooks();
   }
 
   $scope.colorChange = function($event, color) {
-
+    booksRestService.getBooks();
   }
 
   /* End picker events */

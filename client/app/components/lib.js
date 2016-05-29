@@ -10,13 +10,17 @@ require('front-angular-datepicker/dist/angular-datepicker.css');
 require('angularjs-color-picker');
 require('angularjs-color-picker/dist/angularjs-color-picker.min.css');
 
-require('angular').module('exb.books.directives', ['dndLists','datePicker','color.picker']);
-
+/* module definitions */
+var angular = require('angular');
+angular.module('exb.books.directives', ['dndLists','datePicker','color.picker']);
+angular.module('exb.books.services', []);
 
 module.exports = [
+    require('./services/endpoints.js'),
+    require('./services/books.rest.js'),
     require('./util/keypress'),
     require('./util/autofocus'),
     require('./headernav/headernav'),
     require('./filter/filter'),
-    require('./booklist/booklist')
+    require('./booklist/booklist'),
 ];
