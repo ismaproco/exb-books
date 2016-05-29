@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+var booksRest = function(req, res, next) {
 
     res.contentType('application/json');
 
@@ -64,6 +63,10 @@ router.get('/', function(req, res, next) {
 
 
   res.send(JSON.stringify(books));
-});
+};
+
+/* POST users listing. */
+router.post('/', booksRest);
+router.get('/', booksRest);
 
 module.exports = router;
