@@ -29,6 +29,10 @@ var config = {
         loader: "style!css!less"
       },
       {
+        test: /\.css$/,
+        loader: "style!css!less"
+      },
+      {
         test: /.html$/,
         loader: "html"
       }
@@ -36,6 +40,14 @@ var config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+        moment: "moment",
+        "window.moment": "moment"
+    }),
+    new webpack.ProvidePlugin({
+        tinycolor: "tinycolor2",
+        "window.tinycolor": "tinycolor2"
+    }),
   ]
 };
 module.exports = config;
