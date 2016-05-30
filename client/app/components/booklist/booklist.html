@@ -1,4 +1,7 @@
-<div ng-repeat="item in ctrl.service.books" class="book-row">
+<div ng-if="ctrl.service.processing">
+    Loading...
+</div>
+<div ng-repeat="item in ctrl.service.books" class="book-row fade" >
   <div class="col-1">
       <img ng-src="{{item.imageUrl}}" alt="{{item.name}}" />
   </div>
@@ -13,4 +16,7 @@
     </button>
   </div>
   <div class="clear-both"></div>
+</div>
+<div ng-if="ctrl.service.books.length < ctrl.service.numberItems">
+    <button class="load-more" ng-click="loadMore()">Load More {{ctrl.service.books.length }} | {{ctrl.service.numberItems }}</button>
 </div>

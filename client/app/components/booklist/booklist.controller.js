@@ -1,15 +1,14 @@
 'use strict';
 
-var controller = ['$scope','booksRestService', function($scope, booksRestService) {
+var controller = ['$scope','$animate','booksRestService', function($scope, $animate, booksRestService) {
     var ctrl = this;
     $scope.ctrl = ctrl;
 
-    console.log(555);
     ctrl.service = booksRestService;
 
-    ctrl.getbooks = function(){
-        booksService.getBooks();
-    }
+    $scope.$watch('ctrl.service.processing', function(newValue){
+        
+    });
 }];
 
 module.exports = controller;
