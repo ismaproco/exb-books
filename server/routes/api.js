@@ -4,7 +4,6 @@ var router = express.Router();
 var booksRest = function(req, res, next) {
 
     res.contentType('application/json');
-
     var books = [
         {
             id: '123451',
@@ -64,10 +63,15 @@ var booksRest = function(req, res, next) {
     ];
 
 
-    //multiple the existing books to test the multiple entrances
+    // totalItems is huge value to mock the length of items
+    var responseInfo = {
+        totalItems: 50,
+        books: books,
+        skip: req.body.skip
+    }
 
 
-  res.send(JSON.stringify(books));
+  res.send(JSON.stringify(responseInfo));
 };
 
 /* POST users listing. */
