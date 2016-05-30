@@ -8,6 +8,7 @@ module.exports = module.service('booksRestService',
     service.books = [];
     service.numberItems = 0;
     service.processing = false;
+    service.error = false;
     
     var _url = endpoints.books;
     console.log(_url);
@@ -54,9 +55,11 @@ module.exports = module.service('booksRestService',
 
         service.numberItems = res.data.totalItems;
         service.processing = false;
+        service.error = false;
       },function(res){
         console.log('ERROR!!!');
         service.processing = false;
+        service.error = true;
       })
     };
 }]);
