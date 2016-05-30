@@ -12,7 +12,9 @@ require('angularjs-color-picker/dist/angularjs-color-picker.min.css');
 
 /* module definitions */
 var angular = require('angular');
-angular.module('exb.books.directives', ['dndLists','datePicker','color.picker']);
+var ngAnimate = require('angular-animate');
+
+angular.module('exb.books.directives', ['dndLists','datePicker','color.picker', 'ngAnimate']);
 angular.module('exb.books.services', []);
 
 module.exports = [

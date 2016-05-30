@@ -9,6 +9,9 @@ module.exports = module.directive('booksFilter', function(){
     return {
         restrict: 'E', 
         template: template,
-        controller: controller
+        controller: controller,
+        link: function(scope, element, attrs){
+            scope.init();
+        }
     }
 });

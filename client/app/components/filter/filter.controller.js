@@ -1,8 +1,8 @@
 'use strict';
 
-var controller = ['$scope', 'booksRestService', function($scope, booksRestService) {
+var controller = ['$scope', '$timeout' ,'booksRestService', function($scope, $timeout, booksRestService) {
   
-  var inputVisible = false;
+  var inputVisible = false, oldData;
   $scope.filterCategories = [ ];
   $scope.filterDate = new Date();
   $scope.filterColor = '#AAC4F3';
@@ -106,14 +106,16 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
     return arr;
   }
   
-  function filterChange() {
+  function filterChange(_skip) {
     var data = {
       categories: flatCategories(),
       languages: flatLanguages(),
-      date: $scope.filterDate,
-      coverColor: $scope.filterColor
+      date: moment($scope.filterDate).format('DD.MM.YYYY'),
+      coverColor: $scope.filterColor,
+      skip: _skip || 0
     }
-    
+    //cache the data of the request, for the loadMore
+    oldData = data;
     booksRestService.getBooks(data);
   }
   
@@ -135,7 +137,18 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
   }
 
   /* End picker events */
+  $scope.init = function(){
+    //execute the filter change when the filter is loaded
+    $timeout(function(){
+      filterChange();
+    },0)
+  }
 
+  $scope.loadMore = function() {
+    //replace the skip attribute with the number of items to skip
+    oldData.skip = booksRestService.books.length;
+    booksRestService.getBooks(oldData);
+  }
 }];
 
 module.exports = controller;
