@@ -5,10 +5,6 @@ var controller = ['$scope','$animate','booksRestService', function($scope, $anim
     $scope.ctrl = ctrl;
 
     ctrl.service = booksRestService;
-
-    $scope.$watch('ctrl.service.processing', function(newValue){
-        
-    });
 }];
 
 module.exports = controller;
