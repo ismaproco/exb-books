@@ -6,10 +6,7 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
   $scope.filterCategories = [ ];
   $scope.filterDate = new Date();
   $scope.filterColor = '#AAC4F3';
-  $scope.checkEnglish = true;
-  $scope.checkGerman = true;
-
-
+ 
   $scope.categories = [
     {label:'Biography', type:'draggable'},
     {label:'Children\'s Books', type:'draggable'},
@@ -17,6 +14,11 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
     {label:'Health', type:'draggable'},
     {label:'History', type:'draggable'}
   ];
+  
+  $scope.languageChecks = [
+    { label:'English', value:'english', checked:true },
+    { label:'German', value:'german', checked:false },
+  ]
 
   function categoryFilterExist(item){
     var found = $scope.filterCategories.find(function(element){
@@ -29,8 +31,7 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
       return false;
     }
   }
-
-
+  
   $scope.containerClick = function($event) {
     if(inputVisible === false) {
       $scope.filterCategories.push({type:'input', label:''});
@@ -41,15 +42,15 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
   $scope.updateCategory = function(item, text){
     if(categoryFilterExist({label:text})){
       $scope.deleteFilterCategory(item);
-      inputVisible = false;
       return false;
     }
 
     if(item){
       item.label = text;
       item.type = 'created'
-      inputVisible = false;    
     }
+    inputVisible = false;
+    filterChange();
   }
 
   $scope.validateDrag = function(event, index, item, external, type) {
@@ -58,6 +59,10 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
     }else {
       return item;
     }
+  }
+  
+  $scope.categoryInserted = function(event, index, item, external, type) {
+    filterChange();
   }
 
   $scope.deleteFilterCategory = function(item, $event) {
@@ -77,18 +82,56 @@ var controller = ['$scope', 'booksRestService', function($scope, booksRestServic
     if(item.type == 'input' ){
       inputVisible = false;
     }
+    filterChange();
   }
-
+  
+  /* filter information changed */
+  
+  function flatCategories(){
+    var arr = $scope.filterCategories.map(function( category ){
+      return category.label;   
+    });
+    return arr;
+  }
+  
+  function flatLanguages() {
+    var arr = $scope.languageChecks.filter(function(check){
+      return check.checked;
+    }).map(function(check){
+      if(check.checked){
+        return check.label;  
+      }
+    });
+    
+    return arr;
+  }
+  
+  function filterChange() {
+    var data = {
+      categories: flatCategories(),
+      languages: flatLanguages(),
+      date: $scope.filterDate,
+      coverColor: $scope.filterColor
+    }
+    
+    booksRestService.getBooks(data);
+  }
+  
   /* pickers events */
-
   $scope.dateChange = function(modelName, newDate) {
     //hide the calendar
     $scope.$broadcast('hidePicker');
-    booksRestService.getBooks();
+     filterChange();
   }
 
   $scope.colorChange = function($event, color) {
-    booksRestService.getBooks();
+     filterChange();
+  }
+  
+  $scope.languagesChange = function($event) {
+    if($event.target.type === 'checkbox') {
+      filterChange();
+    }
   }
 
   /* End picker events */

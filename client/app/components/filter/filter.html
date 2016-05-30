@@ -4,7 +4,7 @@
         <span class="place-holder" ng-if="filterCategories.length == 0">
             Drag over categories or click and enter a new one
         </span>
-        <ul dnd-list="filterCategories" ng-click="containerClick($event)" dnd-drop="validateDrag(event, index, item, external, type, 'itemType')">
+        <ul dnd-list="filterCategories" ng-click="containerClick($event)" dnd-drop="validateDrag(event, index, item, external, type, 'itemType')" dnd-inserted="categoryInserted(event)">
             <li ng-repeat="item in filterCategories"
                 draggable="true">
                 {{item.label}}
@@ -15,12 +15,13 @@
     </div>
     
     <div>
-        <div class="row">
+        <div class="row" ng-click="languagesChange($event)">
             <span class="label-title">Language</span> 
-            <input type="checkbox" name="english" ng-model="checkEnglish">
-            <label for="english">English</label>
-            <input type="checkbox" name="german" ng-model="checkGerman">
-            <label for="german">German</label>
+            <div ng-repeat="check in languageChecks" class="language-checkbox">
+              <input type="checkbox" name="{{check.value}}" ng-model="check.checked">
+              <label for="{{check.value}}">{{check.label}}</label>
+            </div>
+            
         </div>
         <div class="row">
             <span class="label-title">Date</span>
