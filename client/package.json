@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ismaproco/",
   "devDependencies": {
+    "angular-animate": "^1.5.6",
     "angular-drag-and-drop-lists": "^1.4.0",
     "angularjs-color-picker": "^1.1.2",
     "babel-core": "^6.4.5",

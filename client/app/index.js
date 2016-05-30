@@ -3,6 +3,7 @@
     import of libraries
 */
 var angular = require('angular');
+var ngAnimate = require('angular-animate');
 
 require('./components/lib');
 
