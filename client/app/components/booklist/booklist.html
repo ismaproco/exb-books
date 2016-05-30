@@ -1,3 +1,16 @@
-<div ng-repeat="item in ctrl.service.books">
-    {{item}}
+<div ng-repeat="item in ctrl.service.books" class="book-row">
+  <div class="col-1">
+      <img ng-src="{{item.imageUrl}}" alt="{{item.name}}" />
+  </div>
+  <div class="col-2">
+    <span class="book-title">{{item.name}}</span>
+    <span class="book-details">{{item.author}} | {{item.date}} | {{item.type}} | {{item.language}}</span>
+    <span class="book-description">{{item.description}}</span>
+  </div>
+  <div class="col-3">
+      <button>
+        Add to basket
+    </button>
+  </div>
+  <div class="clear-both"></div>
 </div>
